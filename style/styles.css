@@ -1,0 +1,218 @@
+/* General Styling */
+body {
+    background-color: #1c1c1c; /* Dark background for a sleek look */
+    color: #f8f9fa; /* Light text for readability */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Ensures content takes up available space and pushes footer down */
+.container {
+    flex: 1;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #121212; /* Even darker navbar for contrast */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between images */
+}
+
+.navbar-brand img {
+    width: 40px;
+    height: auto;
+}
+
+/* Responsive Navbar Images */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        width: 30px;
+    }
+}
+
+/* Button Styling */
+.navbar-nav .nav-link {
+    color: #f8f9fa !important;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #b3b3b3 !important;
+}
+
+/* Cart Icon Styling */
+#imgCarrito {
+    width: 30px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Cart Count Badge */
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.8rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+}
+
+/* Catalog Header */
+h2 {
+    text-align: center;
+    color: #f8f9fa;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #121212;
+    color: #f8f9fa;
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    margin-top: auto;
+    border-top: 2px solid #444;
+}
+
+/* Social Media Icons in Footer */
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-contact {
+    font-size: 1.5rem;
+    color: #f8f9fa;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover Effects */
+.social-contact:hover {
+    color: #007bff; /* Change color on hover */
+    transform: scale(1.2);
+}
+
+/* General Card Styling */
+.card {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    transition: transform 0.3s ease-in-out;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Product Images */
+.card-img-top {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 2px solid #444;
+}
+
+/* Product Text */
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}
+
+/* Price Styling */
+.price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #f8f9fa;
+    margin-bottom: 10px;
+}
+
+/* Add to Cart Button */
+.btn-add-cart {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-add-cart:hover {
+    background-color: #0056b3;
+}
+
+/* 🔹 DROPDOWN SELECTOR STYLING (Cantidad Selector) */
+.cantidad-select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #1c1c1c;
+    color: #f8f9fa;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Style when hovering over dropdown */
+.cantidad-select:hover {
+    background-color: #292929;
+}
+
+/* Style when the dropdown is clicked (focused) */
+.cantidad-select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Dropdown arrow customization */
+.cantidad-select::-ms-expand {
+    display: none; /* Hides the default arrow in IE */
+}
+
+.cantidad-select::after {
+    content: '▼';
+    font-size: 14px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Ensures labels align properly */
+.card-body label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #b3b3b3;
+    margin-top: 5px;
+}
