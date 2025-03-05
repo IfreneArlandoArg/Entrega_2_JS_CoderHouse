@@ -1,6 +1,7 @@
 const productsContainer = document.getElementById('product-container');
 
 
+
 let products = document.getElementsByClassName("card");
 
 
@@ -230,6 +231,12 @@ function initializeProductsFrontEnd(productsArray) {
 }
 
 
+
+
+
+
+
+
 initializeProductsFrontEnd(productsArray);
 
 
@@ -241,3 +248,111 @@ initializeProductsFrontEnd(productsArray);
 //getting source image...
 //console.log(products[0].getElementsByTagName("img")[0].getAttribute("src"));
 
+const cartIcon = document.getElementById("cart-icon");
+const cartPopup = document.getElementById("cart-popup");
+const cartItemsList = document.getElementById("cart-items-list");
+const cartTotal = document.getElementById("cart-total");
+const closeCartPopup = document.getElementById("close-cart-popup");
+
+let cart = [];
+
+// 🛒 Function to Add Products to the Cart
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("btn-add-cart")) {
+        const card = event.target.closest(".card");
+        const productName = card.querySelector(".card-title").innerText;
+        const productPrice = parseInt(card.querySelector(".price").innerText.replace("$", ""));
+        const productImage = card.querySelector("img").src;
+        const productSize = card.querySelector(".form-select").value;
+        const productQuantity = parseInt(card.querySelector("#cantidad-producto").value);
+
+        const product = {
+            id: card.dataset.id,
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            size: productSize,
+            quantity: productQuantity
+        };
+
+        addToCart(product);
+    }
+});
+
+function addToCart(product) {
+    const existingProduct = cart.find(item => item.name === product.name && item.size === product.size);
+
+    if (existingProduct) {
+        existingProduct.quantity += product.quantity;
+    } else {
+        cart.push(product);
+    }
+
+    updateCartDisplay();
+}
+
+// 📌 Function to Show Cart Pop-up
+cartIcon.addEventListener("click", function (event) {
+    event.stopPropagation();
+    if (cart.length === 0) {
+        cartItemsList.innerHTML = "<p class='text-center'>Tu carrito está vacío.</p>";
+    }
+    cartPopup.classList.remove("d-none");
+    positionCartPopup();
+});
+
+// ❌ Function to Close the Pop-up when Clicking Outside
+document.addEventListener("click", function (event) {
+    if (!cartPopup.contains(event.target) && event.target !== cartIcon) {
+        cartPopup.classList.add("d-none");
+    }
+});
+
+// ❌ Close Button Inside the Pop-up
+closeCartPopup.addEventListener("click", function () {
+    cartPopup.classList.add("d-none");
+});
+
+// 🧾 Update Cart Display
+function updateCartDisplay() {
+    cartItemsList.innerHTML = "";
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+
+        const cartItem = document.createElement("div");
+        cartItem.classList.add("cart-item");
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-details">
+                <h6>${item.name}</h6>
+                <p>${item.size} | Cantidad: ${item.quantity}</p>
+                <p class="cart-price">$${item.price * item.quantity}</p>
+                <button class="btn btn-danger btn-sm remove-item" data-index="${index}">Eliminar</button>
+            </div>
+        `;
+
+        cartItemsList.appendChild(cartItem);
+    });
+
+    cartTotal.innerHTML = `Total: $${total}`;
+    document.getElementById("cart-count").innerText = cart.length;
+}
+
+// 🗑 Remove Item from Cart
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("remove-item")) {
+        const index = event.target.getAttribute("data-index");
+        cart.splice(index, 1);
+        updateCartDisplay();
+    }
+});
+
+// 🛠 Position the Pop-up Below the Cart Icon
+function positionCartPopup() {
+    const cartIconRect = cartIcon.getBoundingClientRect();
+    cartPopup.style.top = `${cartIconRect.bottom + 5}px`;
+    cartPopup.style.left = `${cartIconRect.left - 150}px`;
+}
