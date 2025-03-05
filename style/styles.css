@@ -1,7 +1,7 @@
-/* General Styling */
+/* 🔹 General Styling */
 body {
-    background-color: #1c1c1c; /* Dark background for a sleek look */
-    color: #f8f9fa; /* Light text for readability */
+    background-color: #1c1c1c;
+    color: #f8f9fa;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -9,31 +9,31 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-/* Ensures content takes up available space and pushes footer down */
+/* 🔹 Ensures content takes up available space and pushes footer down */
 .container {
     flex: 1;
 }
 
-/* Navbar Styling - Fixed at the top */
+/* 🔹 Navbar Styling - Fixed at the top */
 .navbar {
-    background-color: #121212; /* Dark navbar for contrast */
-    position: fixed; /* Keeps it fixed at the top */
+    background-color: #121212;
+    position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Ensures it's above other elements */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Adds subtle shadow for depth */
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
     padding: 10px 0;
 }
 
 /* Adds margin to prevent content from hiding under the navbar */
 .navbar + .container {
-    margin-top: 80px; /* Adjusted to fit navbar height */
+    margin-top: 80px;
 }
 
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between images */
+    gap: 10px;
 }
 
 .navbar-brand img {
@@ -41,14 +41,14 @@ body {
     height: auto;
 }
 
-/* Responsive Navbar Images */
+/* 🔹 Responsive Navbar Images */
 @media (max-width: 768px) {
     .navbar-brand img {
         width: 30px;
     }
 }
 
-/* Navbar Links */
+/* 🔹 Navbar Links */
 .navbar-nav .nav-link {
     color: #f8f9fa !important;
     transition: color 0.3s, transform 0.3s;
@@ -58,11 +58,11 @@ body {
 }
 
 .navbar-nav .nav-link:hover {
-    color: #007bff !important; /* Highlight effect */
+    color: #007bff !important;
     transform: scale(1.1);
 }
 
-/* Cart Icon Styling */
+/* 🔹 Cart Icon Styling */
 #imgCarrito {
     width: 30px;
     height: auto;
@@ -70,7 +70,7 @@ body {
     margin-right: 5px;
 }
 
-/* Cart Count Badge */
+/* 🔹 Cart Count Badge */
 .badge {
     position: absolute;
     top: -5px;
@@ -80,7 +80,7 @@ body {
     border-radius: 50%;
 }
 
-/* Catalog Header */
+/* 🔹 Catalog Header */
 h2 {
     text-align: center;
     color: #f8f9fa;
@@ -88,7 +88,7 @@ h2 {
     font-weight: bold;
 }
 
-/* Footer Styling */
+/* 🔹 Footer Styling */
 footer {
     background-color: #121212;
     color: #f8f9fa;
@@ -99,7 +99,7 @@ footer {
     border-top: 2px solid #444;
 }
 
-/* Social Media Icons in Footer */
+/* 🔹 Social Media Icons in Footer */
 .social-icons {
     margin-top: 10px;
 }
@@ -117,13 +117,13 @@ footer {
     transition: color 0.3s ease-in-out;
 }
 
-/* Hover Effects */
+/* 🔹 Hover Effects */
 .social-contact:hover {
-    color: #007bff; /* Change color on hover */
+    color: #007bff;
     transform: scale(1.2);
 }
 
-/* General Card Styling */
+/* 🔹 General Card Styling */
 .card {
     background-color: #2a2a2a;
     color: #ffffff;
@@ -139,7 +139,7 @@ footer {
     transform: scale(1.05);
 }
 
-/* Product Images */
+/* 🔹 Product Images */
 .card-img-top {
     width: 100%;
     height: 250px;
@@ -147,7 +147,7 @@ footer {
     border-bottom: 2px solid #444;
 }
 
-/* Product Text */
+/* 🔹 Product Text */
 .card-title {
     font-size: 1.2rem;
     font-weight: bold;
@@ -158,7 +158,7 @@ footer {
     color: #b3b3b3;
 }
 
-/* Price Styling */
+/* 🔹 Price Styling */
 .price {
     font-size: 1.4rem;
     font-weight: bold;
@@ -166,7 +166,7 @@ footer {
     margin-bottom: 10px;
 }
 
-/* Add to Cart Button */
+/* 🔹 Add to Cart Button */
 .btn-add-cart {
     background-color: #007bff;
     color: white;
@@ -181,7 +181,7 @@ footer {
     background-color: #0056b3;
 }
 
-/* 🔹 DROPDOWN SELECTOR STYLING (Cantidad Selector) */
+/* 🔹 DROPDOWN SELECTOR STYLING */
 .cantidad-select {
     width: 100%;
     padding: 8px;
@@ -196,56 +196,32 @@ footer {
     cursor: pointer;
 }
 
-/* Style when hovering over dropdown */
 .cantidad-select:hover {
     background-color: #292929;
 }
 
-/* Style when the dropdown is clicked (focused) */
 .cantidad-select:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Dropdown arrow customization */
-.cantidad-select::-ms-expand {
-    display: none; /* Hides the default arrow in IE */
-}
-
-.cantidad-select::after {
-    content: '▼';
-    font-size: 14px;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-/* Ensures labels align properly */
-.card-body label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #b3b3b3;
-    margin-top: 5px;
-}
-
-/* 🛒 Cart Pop-up */
-
-/* 🛒 Cart Pop-up */
+/* 🔹 Cart Pop-up (Fixed to the Right) */
 .cart-popup {
-    position: absolute;
+    position: fixed;
+    right: 0;
+    top: 60px;
+    width: 350px;
     background-color: #1c1c1c;
-    border: 2px solid #007bff;
-    padding: 10px;
-    width: 280px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-left: 3px solid #007bff;
+    padding: 15px;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.4);
     text-align: center;
     z-index: 9999;
     display: none;
+    max-height: 500px; /* Prevents the pop-up from expanding infinitely */
+    overflow: hidden; /* Ensures only items list is scrollable */
 }
 
 /* Show the pop-up */
@@ -253,7 +229,34 @@ footer {
     display: block;
 }
 
-/* Header */
+/* 🔹 Scrollable Cart Items Wrapper */
+.cart-items-wrapper {
+    max-height: 250px; /* Limits cart item section height */
+    overflow-y: auto; /* Enables scrolling when there are many items */
+    margin-bottom: 10px; /* Space between items and total */
+    padding-right: 5px; /* Prevents horizontal scrollbar */
+}
+
+/* 🔹 Custom Scrollbar Styling */
+.cart-items-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 3px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 3px;
+}
+
+.cart-items-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+/* 🔹 Cart Header */
 .cart-popup-header {
     display: flex;
     justify-content: space-between;
@@ -274,7 +277,7 @@ footer {
     color: #f8f9fa;
 }
 
-/* Individual Items */
+/* 🔹 Cart Items */
 .cart-item {
     display: flex;
     align-items: center;
@@ -283,6 +286,7 @@ footer {
     border-bottom: 1px solid #444;
 }
 
+/* 🔹 Cart Item Image */
 .cart-item-img {
     width: 60px;
     height: 60px;
@@ -291,6 +295,7 @@ footer {
     margin-right: 10px;
 }
 
+/* 🔹 Cart Item Details */
 .cart-item-details {
     flex: 1;
 }
@@ -312,18 +317,27 @@ footer {
     color: #28a745;
 }
 
+/* 🔹 Remove Item Button */
 .remove-item {
     font-size: 0.8rem;
     padding: 2px 6px;
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-/* 🛒 Cart Icon */
+.remove-item:hover {
+    background-color: #c82333;
+}
+
+/* 🔹 Cart Badge */
 #cart-icon {
     cursor: pointer;
     position: relative;
 }
 
-/* 🛍 Badge */
 #cart-count {
     position: absolute;
     top: -5px;
@@ -332,4 +346,10 @@ footer {
     padding: 3px 6px;
     border-radius: 50%;
     background-color: #dc3545;
+}
+
+/* 🔹 Checkout Button */
+#checkout-btn {
+    width: 100%;
+    margin-top: 10px;
 }

@@ -1,12 +1,12 @@
 const productsContainer = document.getElementById('product-container');
 
+const cartIcon = document.getElementById("imgCarrito");
+const cartPopup = document.getElementById("cart-popup");
+const cartItemsList = document.getElementById("cart-items-list");
+const cartTotal = document.getElementById("cart-total");
+const closeCartPopup = document.getElementById("close-cart-popup");
+let cart = [];
 
-
-let products = document.getElementsByClassName("card");
-
-
-
-const carritoCompra = [];
 
 const productsArray = [
     {
@@ -174,111 +174,39 @@ const productsArray = [
 
 
 //functions...
-function parentDivCard(product){
+// 🔄 Generate Product Cards
+function generateProductCard(product) {
+    const productCard = document.createElement("div");
+    productCard.className = "col-md-4";
 
-    const parentDiv = document.createElement("div");
-    parentDiv.className = "col-md-4";
+    productCard.innerHTML = `
+        <div class="card">
+            <img src="${product.image}" class="card-img-top" alt="${product.name}">
+            <div class="card-body">
+                <h5 class="card-title">${product.name}</h5>
+                <p class="card-text">${product.description}</p>
+                <p class="price">$${product.price}</p>
 
-    parentDiv.innerHTML = `
-               <div class="card">
-                    <img src="${product.image}" class="card-img-top" alt="${product.name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text">${product.description}</p>
-                        <p class="price">$${product.price}</p>
-                         
-                          <!-- Size Selector -->
+                <!-- Size Selector -->
+                <select class="form-select size-select cantidad-select">
+                    ${product.size.map(size => `<option value="${size}">Tamaño: ${size}</option>`).join('')}
+                </select>
 
-                         <select id="size-producto" class="form-select cantidad-select">
-                          ${optionSizeHTML(product.size)}
-                        </select>
+                <!-- Quantity Selector -->
+                <select class="form-select quantity-select cantidad-select">
+                    ${[1, 2, 3, 4, 5].map(q => `<option value="${q}">${q} U.</option>`).join('')}
+                </select>
 
-                        <!-- Amount Selector -->
-                        
-                        <select id="cantidad-producto" class="form-select cantidad-select">
-                            <option value="1">1 U.</option>
-                            <option value="2">2 U.</option>
-                            <option value="3">3 U.</option>
-                            <option value="4">4 U.</option>
-                            <option value="5">5 U.</option>
-                        </select>
-    
-                        <button class="btn btn-primary btn-add-cart">Agregar al Carrito</button>
-                    </div>
-                </div>
-    `
+                <button class="btn btn-primary btn-add-cart">Agregar al Carrito</button>
+            </div>
+        </div>
+    `;
 
-    return parentDiv;
-}
-
-function optionSizeHTML(sizeArray) {
-    let sizeHTML = "";
-    for(const size of sizeArray){
-        sizeHTML += `<option value="${size}"> Size : ${size}</option>`
-    }
-
-    return sizeHTML
-    
+    return productCard;
 }
 
 
-function initializeProductsFrontEnd(productsArray) {
-    for(const product of productsArray) {
-        
-        productsContainer.appendChild(parentDivCard(product))
-                
-    }
-}
-
-
-
-
-
-
-
-
-initializeProductsFrontEnd(productsArray);
-
-
-
-
-
-
-
-//getting source image...
-//console.log(products[0].getElementsByTagName("img")[0].getAttribute("src"));
-
-const cartIcon = document.getElementById("cart-icon");
-const cartPopup = document.getElementById("cart-popup");
-const cartItemsList = document.getElementById("cart-items-list");
-const cartTotal = document.getElementById("cart-total");
-const closeCartPopup = document.getElementById("close-cart-popup");
-
-let cart = [];
-
-// 🛒 Function to Add Products to the Cart
-document.addEventListener("click", function (event) {
-    if (event.target.classList.contains("btn-add-cart")) {
-        const card = event.target.closest(".card");
-        const productName = card.querySelector(".card-title").innerText;
-        const productPrice = parseInt(card.querySelector(".price").innerText.replace("$", ""));
-        const productImage = card.querySelector("img").src;
-        const productSize = card.querySelector(".form-select").value;
-        const productQuantity = parseInt(card.querySelector("#cantidad-producto").value);
-
-        const product = {
-            id: card.dataset.id,
-            name: productName,
-            price: productPrice,
-            image: productImage,
-            size: productSize,
-            quantity: productQuantity
-        };
-
-        addToCart(product);
-    }
-});
-
+// ✅ Add to Cart Array
 function addToCart(product) {
     const existingProduct = cart.find(item => item.name === product.name && item.size === product.size);
 
@@ -291,29 +219,7 @@ function addToCart(product) {
     updateCartDisplay();
 }
 
-// 📌 Function to Show Cart Pop-up
-cartIcon.addEventListener("click", function (event) {
-    event.stopPropagation();
-    if (cart.length === 0) {
-        cartItemsList.innerHTML = "<p class='text-center'>Tu carrito está vacío.</p>";
-    }
-    cartPopup.classList.remove("d-none");
-    positionCartPopup();
-});
-
-// ❌ Function to Close the Pop-up when Clicking Outside
-document.addEventListener("click", function (event) {
-    if (!cartPopup.contains(event.target) && event.target !== cartIcon) {
-        cartPopup.classList.add("d-none");
-    }
-});
-
-// ❌ Close Button Inside the Pop-up
-closeCartPopup.addEventListener("click", function () {
-    cartPopup.classList.add("d-none");
-});
-
-// 🧾 Update Cart Display
+// 🔄 Update Cart Display
 function updateCartDisplay() {
     cartItemsList.innerHTML = "";
 
@@ -341,6 +247,43 @@ function updateCartDisplay() {
     document.getElementById("cart-count").innerText = cart.length;
 }
 
+
+
+
+function initializeProductsFrontEnd(productsArray) {
+    for(const product of productsArray) {
+        
+        productsContainer.appendChild(generateProductCard(product))
+                
+    }
+}
+
+
+
+//Event listener 
+// 🛒 Add Product to Cart
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("btn-add-cart")) {
+        const card = event.target.closest(".card");
+        const productName = card.querySelector(".card-title").innerText;
+        const productPrice = parseInt(card.querySelector(".price").innerText.replace("$", ""));
+        const productImage = card.querySelector("img").src;
+        const productSize = card.querySelector(".size-select").value;
+        const productQuantity = parseInt(card.querySelector(".quantity-select").value);
+
+        const product = {
+            name: productName,
+            price: productPrice,
+            image: productImage,
+            size: productSize,
+            quantity: productQuantity
+        };
+
+        addToCart(product);
+    }
+});
+
+
 // 🗑 Remove Item from Cart
 document.addEventListener("click", function (event) {
     if (event.target.classList.contains("remove-item")) {
@@ -350,9 +293,29 @@ document.addEventListener("click", function (event) {
     }
 });
 
-// 🛠 Position the Pop-up Below the Cart Icon
-function positionCartPopup() {
-    const cartIconRect = cartIcon.getBoundingClientRect();
-    cartPopup.style.top = `${cartIconRect.bottom + 5}px`;
-    cartPopup.style.left = `${cartIconRect.left - 150}px`;
-}
+// 📌 Show Cart Pop-up
+cartIcon.addEventListener("click", function (event) {
+    event.stopPropagation();
+    if (cart.length === 0) {
+        cartItemsList.innerHTML = "<p class='text-center'>Tu carrito está vacío.</p>";
+    }
+    cartPopup.classList.remove("d-none");
+    positionCartPopup();
+});
+
+// ❌ Close the Pop-up
+closeCartPopup.addEventListener("click", function () {
+    cartPopup.classList.add("d-none");
+});
+
+// ❌ Close Pop-up when Clicking Outside
+document.addEventListener("click", function (event) {
+    if (!cartPopup.contains(event.target) && event.target !== cartIcon) {
+        cartPopup.classList.add("d-none");
+    }
+});
+
+
+
+
+initializeProductsFrontEnd(productsArray);

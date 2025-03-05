@@ -35,7 +35,7 @@
                         <a class="nav-link" href="#product-container">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link position-relative" href="#cart-popup" >
+                        <a id="cart-icon" class="nav-link position-relative" href="javascript:void(0);">
                             <img id="imgCarrito" src="img/carrito-de-compras.png" alt="Carrito de compras">
                             <span class="badge bg-danger" id="cart-count">0</span>
                         </a>
@@ -45,25 +45,23 @@
         </div>
     </nav>
 
-   
-
     <!-- Product Catalog -->
     <div class="container mt-4">
         <h2 class="text-center">Catálogo de Productos</h2>
-        <div class="row" id="product-container">
-
-             <!-- Cart Pop-up -->
-<div id="cart-popup" class="cart-popup d-none">
-    <div class="cart-popup-header">
-        <h5>Carrito de Compras</h5>
-        <span id="close-cart-popup">&times;</span>
+        <div class="row" id="product-container"></div>
     </div>
-    <div id="cart-items-list"></div>
-    <p id="cart-total">Total: $0</p>
-    <button id="checkout-btn" class="btn btn-success">Finalizar Compra</button>
-</div>
 
+    <!-- 🛒 Cart Pop-up (Positioned on the Right) -->
+    <div id="cart-popup" class="cart-popup d-none">
+        <div class="cart-popup-header">
+            <h5>Carrito de Compras</h5>
+            <span id="close-cart-popup">&times;</span>
         </div>
+        <div class="cart-items-wrapper">
+            <div id="cart-items-list"></div> <!-- Inside a scrollable wrapper -->
+        </div>
+        <p id="cart-total">Total: $0</p>
+        <button id="checkout-btn" class="btn btn-success">Finalizar Compra</button>
     </div>
 
     <!-- Footer -->
