@@ -64,6 +64,55 @@
         <button id="checkout-btn" class="btn btn-success">Finalizar Compra</button>
     </div>
 
+
+    <!-- 🛒 CheckOut Pop-up  -->
+    <div id="checkout-popup" class="checkout-popup d-none">
+        <div class="checkout-popup-content">
+            <h5>Checkout</h5>
+            <form id="checkout-form">
+                
+                <input type="text" id="full-name" placeholder="Nombre Completo" required>
+                
+                
+                <input type="text" id="address" placeholder="Dirección de entrega" required>
+                
+                
+                <input type="text" id="phone" placeholder="Teléfono" required>
+                
+                <label>Método de Pago</label>
+                <select id="payment-method">
+                    <option value="debit">Tarjeta de Débito</option>
+                    <option value="credit">Tarjeta de Crédito</option>
+                </select>
+                
+                <div id="installments-section" class="d-none">
+                    <label>Cuotas</label>
+                    <select id="installments">
+                        <option value="1">1 Pago</option>
+                        <option value="3">3 Pagos</option>
+                        <option value="4">4 Pagos</option>
+                        <option value="5">5 Pagos</option>
+                        <option value="6">6 Pagos</option>
+                    </select>
+                </div>
+                
+                <p id="checkout-total"></p>
+
+                <button type="submit" id="pay-btn" class="btn btn-success">Pagar</button>
+                <button type="button" id="close-checkout-popup" class="btn btn-danger">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+  
+<!-- 🛒 Alert Pop-up -->
+<div id="alert-popup" class="alert-popup d-none shadow-lg">
+    <p id="alert-popup-text"></p>
+    <button class="btn btn-primary w-100 mt-2" id="alert-popup-ok-btn">OK</button>
+</div>
+
+
+
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3 mt-5">
         <p>&copy; 2025 Indumentaria Hombre. Todos los derechos reservados.</p>

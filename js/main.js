@@ -300,7 +300,7 @@ cartIcon.addEventListener("click", function (event) {
         cartItemsList.innerHTML = "<p class='text-center'>Tu carrito está vacío.</p>";
     }
     cartPopup.classList.remove("d-none");
-    positionCartPopup();
+   
 });
 
 // ❌ Close the Pop-up
@@ -319,3 +319,143 @@ document.addEventListener("click", function (event) {
 
 
 initializeProductsFrontEnd(productsArray);
+
+
+//CheckOUt
+const checkoutBtn = document.getElementById("checkout-btn");
+
+
+const checkoutPopup = document.getElementById("checkout-popup");
+const closeCheckoutPopup = document.getElementById("close-checkout-popup");
+const checkoutForm = document.getElementById("checkout-form");
+const paymentMethod = document.getElementById("payment-method");
+const installmentsSection = document.getElementById("installments-section");
+const installmentsSelect = document.getElementById("installments");
+const payBtn = document.getElementById("pay-btn");
+
+const textBoxPhone = document.getElementById("phone");
+const textBoxFullName = document.getElementById("full-name");
+const textBoxAddress = document.getElementById("address");
+
+
+
+// Close Checkout Pop-up
+closeCheckoutPopup.addEventListener("click", function () {
+    checkoutPopup.classList.add("d-none");
+});
+
+// Show Installments Section for Credit Card
+paymentMethod.addEventListener("change", function () {
+    if (paymentMethod.value === "credit") {
+        installmentsSection.classList.remove("d-none");
+    } else {
+        installmentsSection.classList.add("d-none");
+    }
+});
+
+
+function cleanCheckoutInputs() {
+    textBoxAddress.value = "";
+    textBoxFullName.value = "";
+    textBoxPhone.value = "";
+    paymentMethod.value = "debit";
+    installmentsSelect.value = "1";
+
+    installmentsSection.classList.add("d-none");
+    
+}
+
+// Handle Payment
+checkoutForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const customerInfo = {
+        name: textBoxFullName.value,
+        address: textBoxAddress.value,
+        phone: textBoxPhone.value,
+        paymentMethod: paymentMethod.value,
+        installments: paymentMethod.value === "credit" ? parseInt(installmentsSelect.value) : 1
+    };
+
+    const purchaseData = {
+        InfoCliente: customerInfo,
+        Cart: cart
+    };
+
+    cleanCheckoutInputs();
+
+    localStorage.setItem("compra", JSON.stringify(purchaseData));
+    //alert("Compra realizada con éxito!");
+    alertPopupText.innerText = "Compra realizada con éxito! ✅";
+    alertPopup.classList.remove("d-none");
+    
+    cart = [];
+    updateCartDisplay();
+    checkoutPopup.classList.add("d-none");
+});
+
+
+
+// 🏷️ Element for Displaying Total in Checkout Pop-up
+const checkoutTotalDisplay = document.getElementById("checkout-total");
+
+
+
+
+
+// Function to Calculate and Display Total Price
+function updateCheckoutTotal() {
+    let totalAmount = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    let paymentMethodSelected = paymentMethod.value;
+    let installments = paymentMethodSelected === "credit" ? parseInt(installmentsSelect.value) : 1;
+    
+    if (installments === 1) {
+        checkoutTotalDisplay.innerText = `Total a pagar: $${totalAmount}`;
+    } else {
+        let installmentValue = Math.round(totalAmount / installments);
+        checkoutTotalDisplay.innerText = `Total a pagar: $${totalAmount} \n ${installments} cuotas de $${installmentValue} sin interés`;
+    }
+}
+
+// 🚀 Open Checkout Pop-up (Only if Cart is Not Empty)
+checkoutBtn.addEventListener("click", function () {
+    if (cart.length === 0) {
+       // alert("El carrito está vacío. Agrega productos antes de proceder al pago.");
+        alertPopupText.innerText = "El carrito está vacío. Agrega productos antes de proceder al pago.";
+        alertPopup.classList.remove("d-none");
+        return;
+    }
+    
+    cartPopup.classList.add("d-none");
+    checkoutPopup.classList.remove("d-none");
+    updateCheckoutTotal(); // Update total price display
+    
+});
+
+
+// 🔄 Update Total Display on Payment Method Change
+paymentMethod.addEventListener("change", function () {
+    if (paymentMethod.value === "credit") {
+        installmentsSection.classList.remove("d-none");
+    } else {
+        installmentsSection.classList.add("d-none");
+    }
+    updateCheckoutTotal();
+});
+
+// 🔄 Update Total Display on Installments Change
+installmentsSelect.addEventListener("change", updateCheckoutTotal);
+
+
+//alert pop-up
+const alertPopup = document.getElementById("alert-popup");
+const alertPopupText = document.getElementById("alert-popup-text");
+const alertPopupOkBtn = document.getElementById("alert-popup-ok-btn");
+
+//Closes pop-up
+
+alertPopupOkBtn.addEventListener("click", () => {
+    
+    alertPopup.classList.add("d-none");
+
+});
