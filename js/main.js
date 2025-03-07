@@ -174,7 +174,7 @@ const productsArray = [
 
 
 //functions...
-// 🔄 Generate Product Cards
+//Generate Product Cards
 function generateProductCard(product) {
     const productCard = document.createElement("div");
     productCard.className = "col-md-4";
@@ -219,7 +219,7 @@ function addToCart(product) {
     updateCartDisplay();
 }
 
-// 🔄 Update Cart Display
+// Update Cart Display
 function updateCartDisplay() {
     cartItemsList.innerHTML = "";
 
@@ -284,7 +284,7 @@ document.addEventListener("click", function (event) {
 });
 
 
-// 🗑 Remove Item from Cart
+// Remove Item from Cart
 document.addEventListener("click", function (event) {
     if (event.target.classList.contains("remove-item")) {
         const index = event.target.getAttribute("data-index");
@@ -293,7 +293,7 @@ document.addEventListener("click", function (event) {
     }
 });
 
-// 📌 Show Cart Pop-up
+// Show Cart Pop-up
 cartIcon.addEventListener("click", function (event) {
     event.stopPropagation();
     if (cart.length === 0) {
@@ -303,12 +303,12 @@ cartIcon.addEventListener("click", function (event) {
    
 });
 
-// ❌ Close the Pop-up
+// Close Cart Pop-up
 closeCartPopup.addEventListener("click", function () {
     cartPopup.classList.add("d-none");
 });
 
-// ❌ Close Pop-up when Clicking Outside
+// Close Cart Pop-up when Clicking Outside
 document.addEventListener("click", function (event) {
     if (!cartPopup.contains(event.target) && event.target !== cartIcon) {
         cartPopup.classList.add("d-none");
@@ -433,7 +433,7 @@ checkoutBtn.addEventListener("click", function () {
 });
 
 
-// 🔄 Update Total Display on Payment Method Change
+// Update Total Display on Payment Method Change
 paymentMethod.addEventListener("change", function () {
     if (paymentMethod.value === "credit") {
         installmentsSection.classList.remove("d-none");
@@ -443,7 +443,7 @@ paymentMethod.addEventListener("change", function () {
     updateCheckoutTotal();
 });
 
-// 🔄 Update Total Display on Installments Change
+// Update Total Display on Installments Change
 installmentsSelect.addEventListener("change", updateCheckoutTotal);
 
 
@@ -452,7 +452,7 @@ const alertPopup = document.getElementById("alert-popup");
 const alertPopupText = document.getElementById("alert-popup-text");
 const alertPopupOkBtn = document.getElementById("alert-popup-ok-btn");
 
-//Closes pop-up
+//Closes alert pop-up
 
 alertPopupOkBtn.addEventListener("click", () => {
     
