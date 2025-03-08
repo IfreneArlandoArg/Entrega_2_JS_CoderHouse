@@ -31,6 +31,7 @@ Un programa qué emula (simula), un sistema de compra de indumentarias para homb
 
 
 * UI Proncipal (Pagina de inicio).
+    ![Demo](assets/paginaInicialDemo.gif)
 * UI Carrito sin producto(s).
 * UI Alerta Carrito Vacio.
 * UI Carrito con productos.
