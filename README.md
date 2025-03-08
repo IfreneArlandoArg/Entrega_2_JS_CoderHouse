@@ -28,3 +28,12 @@ Se debe entregar :
 ## Propusta de Resolución.
 
 Un programa qué emula (simula), un sistema de compra de indumentarias para hombre.
+
+
+* UI Proncipal (Pagina de inicio).
+* UI Carrito sin producto(s).
+* UI Alerta Carrito Vacio.
+* UI Carrito con productos.
+* UI CheckOut (Finalizar Compra clicked).
+* UI CheckOut Credio - Cuotas (Finalizar Compra clicked).
+* UI Alerta pago completo.
