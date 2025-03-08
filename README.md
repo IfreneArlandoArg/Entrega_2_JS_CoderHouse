@@ -36,12 +36,12 @@ Un programa qué emula (simula), un sistema de compra de indumentarias para homb
 * UI Carrito sin producto(s) - Alerta Carrito Vacio.
     ![Demo](assets/CarritoVacio.gif)
 
-* UI Agregar + ver productos en Carrito => Link Youtube short DEMO .
+* UI Agregar + ver productos en Carrito => Link Youtube short DEMO ⬇️.
 
     [![Link Youtube Demo](https://img.youtube.com/vi/soGM_gHxJWY/maxresdefault.jpg)](https://youtu.be/soGM_gHxJWY)
 
 
-* UI CheckOut (Finalizar Compra clicked) => Link Youtube short DEMO.
+* UI CheckOut (Finalizar Compra clicked) => Link Youtube short DEMO  ⬇️.
 
      [![Watch the video](https://img.youtube.com/vi/2SGfYpLxMC0/maxresdefault.jpg)](https://youtu.be/2SGfYpLxMC0)
 
