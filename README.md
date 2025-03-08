@@ -32,9 +32,12 @@ Un programa qué emula (simula), un sistema de compra de indumentarias para homb
 
 * UI Proncipal (Pagina de inicio).
     ![Demo](assets/paginaInicialDemo.gif)
-* UI Carrito sin producto(s).
-* UI Alerta Carrito Vacio.
-* UI Carrito con productos.
+
+* UI Carrito sin producto(s) - Alerta Carrito Vacio.
+    ![Demo](assets/CarritoVacio.gif)
+
+* UI Agregar + ver productos en Carrito.
+    [![Watch the video](https://img.youtube.com/vi/soGM_gHxJWY/maxresdefault.jpg)](https://youtu.be/soGM_gHxJWY)
+
+
 * UI CheckOut (Finalizar Compra clicked).
-* UI CheckOut Credio - Cuotas (Finalizar Compra clicked).
-* UI Alerta pago completo.
