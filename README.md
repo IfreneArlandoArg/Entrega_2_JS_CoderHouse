@@ -43,5 +43,6 @@ Un programa qué emula (simula), un sistema de compra de indumentarias para homb
 
 * UI CheckOut (Finalizar Compra clicked).
 
-      [Watch the video on YouTube](https://youtu.be/2SGfYpLxMC0)
+      [![Link Youtube Demo](https://img.youtube.com/vi/2SGfYpLxMC0/maxresdefault.jpg)](https://youtu.be/2SGfYpLxMC0)
+
 
